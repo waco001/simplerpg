@@ -46,7 +46,7 @@ public class World {
 	public static void loadMap(){ //Int array is put to 0 if not set...
 		TextureManager.loadMap();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/res/tiles/tileData.dat"));
+			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/res/tiles/Map.zz"));
 			String line = br.readLine();
 			MAP_X = Integer.parseInt(line.split(" ")[0]);
 			MAP_Y = Integer.parseInt(line.split(" ")[1]);
@@ -65,7 +65,9 @@ public class World {
 					}
 				}
 			}
-			System.out.println(MAP_X + " " + MAP_Y);
+			
+			br.close();
+			//System.out.println(MAP_X + " " + MAP_Y);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

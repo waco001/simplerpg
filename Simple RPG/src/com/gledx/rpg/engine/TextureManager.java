@@ -11,7 +11,7 @@ public class TextureManager {
 	public static ArrayList<TexturedGameTile> tileImages = new ArrayList<TexturedGameTile>();
 	public static void loadMap(){
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/res/tiles/tileImageData.dat"));
+			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/res/tiles/tileData.dat"));
 			String line = br.readLine();
 			int lines = 0;
 			while(line != null){
@@ -25,6 +25,7 @@ public class TextureManager {
 					tileImages.add(new TexturedGameTile(lineData[0], lineData[1]));
 				}
 			}
+			br.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,7 +37,7 @@ public class TextureManager {
 		for(TexturedGameTile t: tileImages){
 			if(t.tileNumber == ID){
 				i = t.tileTexture.getTextureID();
-				System.out.println(i);
+				//System.out.println(i);
 			}
 		}
 		return i;

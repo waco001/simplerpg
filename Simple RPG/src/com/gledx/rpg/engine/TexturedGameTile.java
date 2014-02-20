@@ -13,7 +13,7 @@ public class TexturedGameTile {
 		this.tileNumber = Integer.parseInt(id);
 		
 		try {
-			tileTexture = TextureLoader.getTexture("GIF",  ResourceLoader.getResourceAsStream(System.getProperty("user.dir") + "/res/tiles/" + filename));
+			tileTexture = TextureLoader.getTexture("gif",  ResourceLoader.getResourceAsStream(System.getProperty("user.dir") + "/res/tiles/" + filename));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
