@@ -13,9 +13,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
 
-import com.gledx.rpg.engine.TextureManager;
 import com.gledx.rpg.engine.World;
 
 public class Game {
@@ -79,7 +77,6 @@ public class Game {
 		}
 		{// Load Everything Else
 			World.loadMap();
-			TextureManager.loadMap();
 			GamePlay.init();
 		}
 
@@ -92,7 +89,7 @@ public class Game {
 			switch(gameState){
 			case GAME_PLAY:
 			{ //Call Updates
-				//GamePlay.update();
+				GamePlay.update();
 			}
 			{ // Call Renders
 				GamePlay.render();

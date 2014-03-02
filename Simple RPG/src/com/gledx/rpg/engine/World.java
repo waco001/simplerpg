@@ -1,16 +1,8 @@
 package com.gledx.rpg.engine;
 
 import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Rectangle;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.ResourceLoader;
 
 
 public class World {
@@ -28,50 +20,11 @@ public class World {
 		for(int x = 0; x <= (MAP_X-1); x++){
 			for(int y = 0; y <= (MAP_Y-1); y++){
 
-				switch(map[x][y]){
-				case 1:
-					spr = new Sprite(x, y, 1);
-					spr.render();
-					break;
-				case 0:
-				default:
-					spr = new Sprite(x, y, 2);
-					spr.render();
-					break;
-				}
-
 			}
 		}
 	}
 	public static void loadMap(){ //Int array is put to 0 if not set...
-		TextureManager.loadMap();
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/res/tiles/Map.zz"));
-			String line = br.readLine();
-			MAP_X = Integer.parseInt(line.split(" ")[0]);
-			MAP_Y = Integer.parseInt(line.split(" ")[1]);
-			int lines = 1;
-			while(line != null){
-				lines++;
-				line = br.readLine();
-				if(lines == 4 && line != null){
-					String[] tileData = line.split(" ");
-					int yvalue = 0;
-					while(yvalue < MAP_Y){
-						for(int k = 0; k > MAP_X; k++){
-							map[k][yvalue] = Integer.parseInt(tileData[k]);
-						}
-						yvalue++;
-					}
-				}
-			}
-			
-			br.close();
-			//System.out.println(MAP_X + " " + MAP_Y);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 
 	public static int pixelToTile(int x){

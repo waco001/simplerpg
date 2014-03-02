@@ -16,7 +16,7 @@ public class GamePlay extends ScreenState{
 	public static Player player = new Player();
 	public static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	public static void init(){
-		gameObjects.add(player);
+		//gameObjects.add(player);
 		// load a default java font
 		}
 	public static void render(){
@@ -25,8 +25,7 @@ public class GamePlay extends ScreenState{
 			//for(GameObject g : gameObjects)
 				//g.render();
 			
-			Font.drawString("Hello", World.tileToPixel(20), World.tileToPixel(28));
-			World.render();
+			
 		}
 	}
 	public static void update(){	
