@@ -5,8 +5,8 @@ import org.newdawn.slick.opengl.Texture;
 
 
 public class Tile {
-	public static final int width = 16;
-	public static final int height = 16;
+	public static final int width = 32;
+	public static final int height = 32;
 	public int x;
 	public int y;
 	public Texture texture;
@@ -16,6 +16,9 @@ public class Tile {
 		switch(type){
 		case "dirt":
 			this.texture = TextureManager.dirtTexture;
+			break;
+		case "grass":
+			this.texture = TextureManager.grassTexture;
 			break;
 		}
 	}
@@ -27,11 +30,11 @@ public class Tile {
 		GL11.glTexCoord2f(0,0);
 		GL11.glVertex2f(x, y);
 		GL11.glTexCoord2f(1,0);
-		GL11.glVertex2f(x+texture.getTextureWidth(), y);
+		GL11.glVertex2f(x+width, y);
 		GL11.glTexCoord2f(1,1);
-		GL11.glVertex2f(x+texture.getTextureWidth(), y+texture.getTextureHeight());
+		GL11.glVertex2f(x+width, y+height);
 		GL11.glTexCoord2f(0,1);
-		GL11.glVertex2f(x, y+texture.getTextureHeight());
+		GL11.glVertex2f(x, y+height);
 		GL11.glEnd();
 	}
 }
