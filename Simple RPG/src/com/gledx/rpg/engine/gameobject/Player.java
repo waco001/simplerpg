@@ -1,89 +1,39 @@
 package com.gledx.rpg.engine.gameobject;
 
-import java.awt.Point;
-
 import org.lwjgl.input.Keyboard;
 
 import com.gledx.rpg.engine.Camera;
-import com.gledx.rpg.engine.World;
-
-
-
+import com.gledx.rpg.engine.Tile;
+import com.gledx.rpg.engine.TileMap;
 
 public class Player extends GameObject{
-	private static final int startingX = 20;
-	private static final int startingY = 15;
-
-	private boolean left, right, up, down = false;
-	private int move = 0;
-
-
+	public static final int startingX = TileMap.fromTile(5);
+	public static final int startingY = TileMap.fromTile(5);
 	public Player() {
-		super(startingX, startingY, 0.8f, 0.1f, 0.1f);
+		super(startingX, startingY, "player");
 		debug = true;
 	}
 	public void update(){
-		{ 
-			{//NEEDED
-				spr.setX(loc.x);
-				spr.setY(loc.y);
-			}
-			{
-				if(move == 6){ //Makes player move at 60/6 fps... 
-					if(left && World.canMoveBounds(new Point(loc.x - 1, loc.y))){
-						loc.x -= 1;
-						Camera.transx += 1;
-					}
-					if(right && World.canMoveBounds(new Point(loc.x + 1, loc.y))){
-						loc.x += 1;
-						Camera.transx -= 1;
-					}
-					if(up && World.canMoveBounds(new Point(loc.x, loc.y + 1))){
-						loc.y += 1;
-						Camera.transy -= 1;
-					}
-					if(down && World.canMoveBounds(new Point(loc.x, loc.y - 1))){
-						loc.y -= 1;
-						Camera.transy += 1;
-					}
-					move = 0;
-
-				}
-				else
-				{
-					move++;
-				}
-			}
-			if(debug) System.out.println(loc.x + " " + loc.y);
-		}
-
+		//System.out.println(TileMap.toTile(loc.x) + " " + TileMap.toTile(loc. y));
 	}
 	public  void getInput(){
-		if(Keyboard.isKeyDown(Keyboard.KEY_A)){
-			left = true;
-		}
-		else{
-			left = false;
-		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)){
-			right = true;
-		}
-		else{
-			right = false;
-		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_W)){
-			up = true;
-		}
-		else{
-			up = false;
+			this.loc.x += Tile.width;
+			Camera.transx -= Tile.width;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)){
-			down = true;
+			this.loc.y -= Tile.height;
+			Camera.transy += Tile.width;
 		}
-		else{
-			down = false;
+		if(Keyboard.isKeyDown(Keyboard.KEY_A)){
+			this.loc.x -= Tile.width;
+			Camera.transx += Tile.width;
 		}
-
+		if(Keyboard.isKeyDown(Keyboard.KEY_W)){
+			this.loc.y += Tile.height;
+			Camera.transy -= Tile.width;
+		}
+		
 	}
 
 }

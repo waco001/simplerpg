@@ -12,10 +12,10 @@ public class TileMap {
 	public static int MAP_SIZE_Y;
 
 	public static int toTile(int x){
-		return x/32;
+		return x/Tile.height;
 	}
 	public static int fromTile(int x){
-		return x*32;
+		return x*Tile.width;
 	}	
 	public static void initMap(){
 		BufferedReader reader = null;
@@ -45,7 +45,7 @@ public class TileMap {
 				}
 			}
 			String[] map = bigMap.toString().split(" ");
-			System.out.println("FOO");
+			//System.out.println("FOO");
 			int x = 0;
 			int y = 0;
 			for(String i : map){
@@ -63,8 +63,8 @@ public class TileMap {
 		}
 	}
 	public static void render(){
-		for(int x = 0; x != MAP_SIZE_X - 1; x++){
-			for(int y = 0; y != MAP_SIZE_Y - 1; y++){
+		for(int x = 0; x != MAP_SIZE_X ; x++){
+			for(int y = 0; y != MAP_SIZE_Y ; y++){
 				getTile(x, y, currentMap[x][y]).render();
 			}
 		}

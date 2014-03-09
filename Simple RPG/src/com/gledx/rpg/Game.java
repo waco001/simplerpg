@@ -9,17 +9,19 @@ import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
 
-import com.gledx.rpg.engine.World;
+import com.gledx.rpg.engine.TileMap;
 
 public class Game {
 	public enum gamestate {GAME_EXIT, GAME_LOAD, GAME_MENU, GAME_PLAY, GAME_MENU_INFO};
 	public static gamestate gameState = gamestate.GAME_LOAD;
-	public static int[] gameWindow = {640, 480};
+	public static int[] gameWindow = {TileMap.fromTile(11), TileMap.fromTile(11)};
 	public static final int frameRate = 60;
 	private static boolean fullscreen = false;
 	private static String gameTitle = "Game Title";
@@ -48,10 +50,12 @@ public class Game {
 	private void load() {
 		try {
 			System.setProperty("org.lwjgl.librarypath",System.getProperty("user.dir") + "/lib/");
+			System.setProperty("org.lwjgl.util.Debug","true");
+
 			Display.setDisplayMode(new DisplayMode(gameWindow[0], gameWindow[1]));
 			Display.setFullscreen(fullscreen);
 			Display.setTitle(gameTitle);
-			Display.setInitialBackground(0.0f, 0.0f, 0.7f);
+			Display.setInitialBackground(0.0f, 0.0f, 0.0f);
 			Display.setVSyncEnabled(vsync);
 			Display.setResizable(resizable);
 			Mouse.setGrabbed(mouseGrab);
@@ -76,7 +80,6 @@ public class Game {
 
 		}
 		{// Load Everything Else
-			World.loadMap();
 			GamePlay.init();
 		}
 
@@ -92,10 +95,13 @@ public class Game {
 				GamePlay.update();
 			}
 			{ // Call Renders
+				// Clear the screen and depth buffer
+				GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);  
 				GamePlay.render();
+
 			}
 			{ //Call Inputs
-				//GamePlay.getInput();
+				GamePlay.getInput();
 			}
 			break;
 			default:
@@ -114,12 +120,7 @@ public class Game {
 						e.printStackTrace();
 					}
 				}
-				while(Keyboard.next()){
-					System.out.println("POO");
-					if(Keyboard.isKeyDown(Keyboard.KEY_Q)){
-						gameState = gamestate.GAME_EXIT;
-					}
-				}
+				//KEYBOARD EVENTS HERE
 
 			}
 		}

@@ -11,10 +11,11 @@ import com.gledx.rpg.engine.TextureManager;
 import com.gledx.rpg.engine.Tile;
 import com.gledx.rpg.engine.TileMap;
 import com.gledx.rpg.engine.gameobject.GameObject;
+import com.gledx.rpg.engine.gameobject.Overlay;
 import com.gledx.rpg.engine.gameobject.Player;
 
 public class GamePlay extends ScreenState{
-	public static Player player = new Player();
+	public static Player player;
 	public static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	static Tile tile;
 	static Tile tile1;
@@ -25,6 +26,8 @@ public class GamePlay extends ScreenState{
 		// load a default java font.
 		TextureManager.load();
 		TileMap.initMap();
+		player = new Player();
+		Camera.init();
 		}
 	public static void render(){
 		if(Display.isVisible() || Display.isDirty()){
@@ -32,21 +35,20 @@ public class GamePlay extends ScreenState{
 			//for(GameObject g : gameObjects)
 				//g.render();
 			TileMap.render();
-			
+			player.render();
+			Overlay.render();
 		}
 	}
 	public static void update(){	
 		Camera.update();
-		for(GameObject g : gameObjects)
-			g.update();
+		player.update();
 		Display.update();
 		Display.sync(Game.frameRate);
 
 	}
 	public static void getInput(){
 		while(Keyboard.next()){
-			for(GameObject g : gameObjects)
-				g.getInput();
+			player.getInput();
 			if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 				Game.gameState = Game.gamestate.GAME_EXIT;
 			}

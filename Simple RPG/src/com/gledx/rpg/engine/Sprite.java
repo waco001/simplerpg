@@ -15,7 +15,7 @@ public class Sprite {
 	
 
 	public void setX(int x) {
-		this.x = World.tileToPixel(x);
+		this.x = TileMap.fromTile(x);
 	}
 
 
@@ -25,12 +25,12 @@ public class Sprite {
 
 
 	public void setY(int y) {
-		this.y = World.tileToPixel(y);
+		this.y = TileMap.fromTile(y);
 	}
 
 	public Sprite(int x, int y) {
-		this.x = World.tileToPixel(x);
-		this.y = World.tileToPixel(y);
+		this.x = TileMap.fromTile(x);
+		this.y = TileMap.fromTile(y);
 	}
 
 	
