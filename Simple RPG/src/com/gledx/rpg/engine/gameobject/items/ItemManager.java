@@ -1,6 +1,7 @@
 package com.gledx.rpg.engine.gameobject.items;
 
 public class ItemManager {
+	public static Item nothing;
 	public static String getItemByID(int ID){
 		switch(ID){
 		case 1:

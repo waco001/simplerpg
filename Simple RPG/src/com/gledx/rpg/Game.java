@@ -50,7 +50,7 @@ public class Game {
 	private void load() {
 		try {
 			System.setProperty("org.lwjgl.librarypath",System.getProperty("user.dir") + "/lib/");
-			System.setProperty("org.lwjgl.util.Debug","true");
+			System.setProperty("org.lwjgl.util.Debug","false");
 
 			Display.setDisplayMode(new DisplayMode(gameWindow[0], gameWindow[1]));
 			Display.setFullscreen(fullscreen);
