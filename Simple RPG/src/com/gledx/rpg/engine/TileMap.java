@@ -61,6 +61,7 @@ public class TileMap {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Util.flip(currentMap); //Flip the map
 	}
 	public static void render(){
 		for(int x = 0; x != MAP_SIZE_X ; x++){

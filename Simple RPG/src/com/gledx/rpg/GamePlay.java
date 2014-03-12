@@ -11,8 +11,8 @@ import com.gledx.rpg.engine.TextureManager;
 import com.gledx.rpg.engine.Tile;
 import com.gledx.rpg.engine.TileMap;
 import com.gledx.rpg.engine.gameobject.GameObject;
-import com.gledx.rpg.engine.gameobject.Overlay;
 import com.gledx.rpg.engine.gameobject.Player;
+import com.gledx.rpg.engine.gameplayoverlay.Overlay;
 
 public class GamePlay extends ScreenState{
 	public static Player player;
