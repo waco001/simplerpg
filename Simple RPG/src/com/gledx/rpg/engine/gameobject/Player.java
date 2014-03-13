@@ -15,8 +15,8 @@ public class Player extends GameObject{
 	public static final int startingY = TileMap.fromTile(25);
 	public static float health;
 	public static float maxHealth;
-	public static float speed;
-	public static float maxSpeed;
+	public static float stamina;
+	public static float maxStamina;
 	public static boolean canMove;
 	/*public static Item[] Inventory = new Item[] {
 												ItemManager.NOTHING,
@@ -33,41 +33,63 @@ public class Player extends GameObject{
 		super(startingX, startingY, "player");
 		debug = true;
 		maxHealth = 5;
-		maxSpeed = 250;
+		maxStamina = 250;
 
 		health = maxHealth;
-		speed = maxSpeed;
+		stamina = maxStamina;
 		canMove = true;
 	}
 	public void update(){
 		//System.out.println(TileMap.toTile(loc.x) + " " + TileMap.toTile(loc. y));
-		speed += 0.5f;
-		if(speed > maxSpeed / 25)
+		//stamina += 0.5f;
+		if(stamina > maxStamina / 25)
 			canMove = true;
-		if(speed >= maxSpeed)
-			speed = maxSpeed;
-		if(speed <= 5)
+		if(stamina >= maxStamina)
+			stamina = maxStamina;
+		if(stamina <= 5)
 			canMove = false;
+		if( !Keyboard.isKeyDown(Keyboard.KEY_W))
+		{
+			if( !Keyboard.isKeyDown(Keyboard.KEY_A))
+			{
+				if( !Keyboard.isKeyDown(Keyboard.KEY_S))
+				{
+					if ( !Keyboard.isKeyDown(Keyboard.KEY_D) )
+					{
+		{
+			if(stamina<maxStamina)
+			{
+         stamina+=0.1f;
+			}
+		}
+		}
+		}
+	    }
+		}
 	}
 	public  void getInput(){
 		if(canMove == true){
 			if(Keyboard.isKeyDown(Keyboard.KEY_D)){
 				this.loc.x += Tile.width;
 				Camera.transx += Tile.width;
+				stamina -= 0.5f;
 			}
 			if(Keyboard.isKeyDown(Keyboard.KEY_S)){
 				this.loc.y -= Tile.height;
 				Camera.transy -= Tile.width;
+				stamina -= 0.5f;
 			}
 			if(Keyboard.isKeyDown(Keyboard.KEY_A)){
 				this.loc.x -= Tile.width;
 				Camera.transx -= Tile.width;
+				stamina -= 0.5f;
 			}
 			if(Keyboard.isKeyDown(Keyboard.KEY_W)){
 				this.loc.y += Tile.height;
 				Camera.transy += Tile.width;
+				stamina -= 0.5f;
 			}
-			speed -= 5.0f;
+			//stamina -= 5.0f;
 			
 		}
 

@@ -47,7 +47,7 @@ public class Overlay {
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			//Stats Overlay
 			statsFont.drawString(10, 10, "Health: " + Player.health + "/" + Player.maxHealth, Color.blue);
-			statsFont.drawString(10, 35, "Speed: " + Player.speed + "/" + Player.maxSpeed, Color.magenta);
+			statsFont.drawString(10, 35, "Stamina: " + Player.stamina + "/" + Player.maxStamina, Color.magenta);
 			// back to your 3D stuff
 			// GL11.glEnable(GL11.GL_LIGHTING);
 			// GL11.glEnable(GL11.GL_DEPTH_TEST);
