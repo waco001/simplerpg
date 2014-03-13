@@ -71,17 +71,7 @@ public class TileMap {
 		}
 	}
 	public static Tile getTile(int x, int y, int i){
-		String type;
-		switch(i){
-		default:
-		case 0:
-			type = "dirt";
-			break;
-		case 1:
-			type = "grass";
-			break;
-		}
-		Tile temptile = new Tile(TileMap.fromTile(x), TileMap.fromTile(y), type);
+		Tile temptile = new Tile(TileMap.fromTile(x), TileMap.fromTile(y), i);
 		return temptile;
 	}
 }

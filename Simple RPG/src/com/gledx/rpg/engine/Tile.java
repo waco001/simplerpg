@@ -6,27 +6,48 @@ import org.newdawn.slick.opengl.Texture;
 
 
 public class Tile {
-	public static final int width = 64;
-	public static final int height = 64;
+	public static final int width = 32;
+	public static final int height = 32;
 	public int x;
 	public int y;
 	public Texture texture;
+	public Tile(int x, int y, int type){
+		this.x = x;
+		this.y = y;
+		switch(type){
+		default:
+		case 0:
+			this.texture = TextureManager.dirtTexture;
+			break;
+		case 1:
+			this.texture = TextureManager.grassTexture;
+			break;
+		case 4:
+			this.texture = TextureManager.topGrassTexture;
+			break;
+		case 3:
+			this.texture = TextureManager.rightGrassTexture;
+			break;
+		case 2:
+			this.texture = TextureManager.bottomGrassTexture;
+			break;
+		case 5:
+			this.texture = TextureManager.leftGrassTexture;
+			break;
+		}
+	}
 	public Tile(int x, int y, String type){
 		this.x = x;
 		this.y = y;
 		switch(type){
-		case "dirt":
-			this.texture = TextureManager.dirtTexture;
-			break;
-		case "grass":
-			this.texture = TextureManager.grassTexture;
-			break;
 		case "player":
 			this.texture = TextureManager.playerTexture;
 			break;
 		}
 	}
 	public void render(){
+		GL11.glEnable(GL11.GL_BLEND);
+
 		Color.white.bind();
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		texture.bind();
@@ -42,6 +63,7 @@ public class Tile {
 		GL11.glVertex2f(x, y+height);
 		GL11.glEnd();
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glDisable(GL11.GL_BLEND);
 
 	}
 	public void render(int x2, int y2) {
@@ -49,7 +71,8 @@ public class Tile {
 
 		this.x = x2;
 		this.y = y2;
-		
+		GL11.glEnable(GL11.GL_BLEND);
+
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		texture.bind();
 		
@@ -64,6 +87,7 @@ public class Tile {
 		GL11.glVertex2f(x, y+height);
 		GL11.glEnd();
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glDisable(GL11.GL_BLEND);
 
 		
 	}

@@ -21,7 +21,7 @@ import com.gledx.rpg.engine.TileMap;
 public class Game {
 	public enum gamestate {GAME_EXIT, GAME_LOAD, GAME_MENU, GAME_PLAY, GAME_MENU_INFO};
 	public static gamestate gameState = gamestate.GAME_LOAD;
-	public static int[] gameWindow = {TileMap.fromTile(11), TileMap.fromTile(11)};
+	public static int[] gameWindow = {32 * 30, 32 * 20};
 	public static final int frameRate = 60;
 	private static boolean fullscreen = false;
 	private static String gameTitle = "Game Title";

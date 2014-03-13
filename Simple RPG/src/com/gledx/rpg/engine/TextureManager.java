@@ -10,10 +10,23 @@ public class TextureManager {
 	public static Texture dirtTexture;
 	public static Texture grassTexture;
 	public static Texture playerTexture;
+	
+	public static Texture rightGrassTexture;
+	public static Texture bottomGrassTexture;
+	public static Texture leftGrassTexture;
+	public static Texture topGrassTexture;
+
 	public static void load(){
 		try {
-			dirtTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/dirt.gif"));
-			grassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/grass.gif"));
+			{//Map Tiles
+				dirtTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/dirt.gif"));
+				grassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/grass.gif"));
+				
+				rightGrassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/gd2.gif"));
+				leftGrassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/gd6.gif"));
+				bottomGrassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/gd4.gif"));
+				topGrassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/gd8.gif"));
+			}
 			playerTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/go/player.gif"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

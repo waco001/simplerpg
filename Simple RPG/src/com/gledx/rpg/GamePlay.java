@@ -28,6 +28,8 @@ public class GamePlay extends ScreenState{
 		TileMap.initMap();
 		player = new Player();
 		Camera.init();
+		Keyboard.enableRepeatEvents(true);
+		Overlay.init();
 		}
 	public static void render(){
 		if(Display.isVisible() || Display.isDirty()){
