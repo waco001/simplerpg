@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import org.lwjgl.input.Keyboard;
 
+import com.gledx.rpg.GamePlay;
 import com.gledx.rpg.engine.Camera;
 import com.gledx.rpg.engine.Tile;
 import com.gledx.rpg.engine.TileMap;
@@ -18,6 +19,8 @@ public class Player extends GameObject{
 	public static float stamina;
 	public static float maxStamina;
 	public static boolean canMove;
+	Enemy enemy;
+	GamePlay gameplay;
 	/*public static Item[] Inventory = new Item[] {
 												ItemManager.NOTHING,
 												ItemManager.NOTHING,
@@ -68,6 +71,26 @@ public class Player extends GameObject{
 		}
 	}
 	public  void getInput(){
+		if(Keyboard.isKeyDown(Keyboard.KEY_Z)){
+		if (this.loc.x == GamePlay.enemy.loc.x+Tile.width)   
+		{
+			this.loc.x += Tile.width;
+		}
+		if (this.loc.x == GamePlay.enemy.loc.x-Tile.width)
+		{
+			this.loc.x -= Tile.width;
+		}
+		if (this.loc.x ==  GamePlay.enemy.loc.y+Tile.height)
+		{
+			this.loc.y += Tile.height;
+		}
+		if (this.loc.x ==  GamePlay.enemy.loc.y-Tile.height)
+		{
+			this.loc.y -= Tile.height;
+		}
+		
+		}
+		
 		if(canMove == true){
 			if(Keyboard.isKeyDown(Keyboard.KEY_D)){
 				this.loc.x += Tile.width;

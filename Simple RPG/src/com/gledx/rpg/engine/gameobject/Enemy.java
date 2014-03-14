@@ -16,6 +16,7 @@ public class Enemy extends GameObject{
 	public static float maxHealth;
 	private Random random;
 	private int moved = 0;
+	Player player;
 
 
 
@@ -37,7 +38,7 @@ public class Enemy extends GameObject{
 	}
 	public  void getInput(){
 		
-		}
+		   }
 
 	
 	public void getAI()
