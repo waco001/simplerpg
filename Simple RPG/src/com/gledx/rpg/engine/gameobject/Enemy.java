@@ -45,8 +45,8 @@ public class Enemy extends GameObject{
 		
 		if (moved == 50)
 				{
-		int mx= random.nextInt(10);
-		int my= random.nextInt(10);
+		int mx= random.nextInt(11);
+		int my= random.nextInt(11);
 		int vx= random.nextInt(2);
 		int vy= random.nextInt(2);
 		if (vx==0)
