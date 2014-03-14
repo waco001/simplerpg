@@ -10,12 +10,14 @@ import com.gledx.rpg.engine.ScreenState;
 import com.gledx.rpg.engine.TextureManager;
 import com.gledx.rpg.engine.Tile;
 import com.gledx.rpg.engine.TileMap;
+import com.gledx.rpg.engine.gameobject.Enemy;
 import com.gledx.rpg.engine.gameobject.GameObject;
 import com.gledx.rpg.engine.gameobject.Player;
 import com.gledx.rpg.engine.gameplayoverlay.Overlay;
 
 public class GamePlay extends ScreenState{
 	public static Player player;
+	public static Enemy enemy;
 	public static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	static Tile tile;
 	static Tile tile1;
@@ -27,6 +29,7 @@ public class GamePlay extends ScreenState{
 		TextureManager.load();
 		TileMap.initMap();
 		player = new Player();
+		enemy = new Enemy();
 		Camera.init();
 		Keyboard.enableRepeatEvents(true);
 		Overlay.init();
@@ -37,6 +40,7 @@ public class GamePlay extends ScreenState{
 			//for(GameObject g : gameObjects)
 				//g.render();
 			TileMap.render();
+			enemy.render();
 			player.render();
 			Overlay.render();
 		}
@@ -44,6 +48,7 @@ public class GamePlay extends ScreenState{
 	public static void update(){	
 		Camera.update();
 		player.update();
+		enemy.update();
 		Display.update();
 		Display.sync(Game.frameRate);
 
@@ -51,6 +56,7 @@ public class GamePlay extends ScreenState{
 	public static void getInput(){
 		while(Keyboard.next()){
 			player.getInput();
+			enemy.getInput();
 			if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 				Game.gameState = Game.gamestate.GAME_EXIT;
 			}

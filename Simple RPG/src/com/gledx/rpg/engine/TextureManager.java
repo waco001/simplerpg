@@ -10,7 +10,7 @@ public class TextureManager {
 	public static Texture dirtTexture;
 	public static Texture grassTexture;
 	public static Texture playerTexture;
-	
+	public static Texture enemyTexture;
 	public static Texture rightGrassTexture;
 	public static Texture bottomGrassTexture;
 	public static Texture leftGrassTexture;
@@ -28,6 +28,8 @@ public class TextureManager {
 				topGrassTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/tiles/gd8.gif"));
 			}
 			playerTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/go/player.gif"));
+			enemyTexture = TextureLoader.getTexture("GIF", ResourceLoader.getResourceAsStream("res/go/enemy.gif"));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

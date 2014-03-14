@@ -43,6 +43,9 @@ public class Tile {
 		case "player":
 			this.texture = TextureManager.playerTexture;
 			break;
+		case "enemy":
+			this.texture = TextureManager.enemyTexture;
+			break;
 		}
 	}
 	public void render(){
